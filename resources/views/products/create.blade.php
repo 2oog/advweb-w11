@@ -21,7 +21,7 @@
             </div>
 
             <button type="submit" class="btn btn-success mt-3">Simpan</button>
-            <a href="index" class="btn btn-secondary mt-3">Batal</a>
+            <a href="/advweb-w11/index" class="btn btn-secondary mt-3">Batal</a>
         </form>
     </div>
 </body>
