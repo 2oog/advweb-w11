@@ -1,7 +1,7 @@
 
 <html>
   <head>
-  <title>orm</title>
+  <title>Form</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -9,7 +9,7 @@
 </head>
 <body>  
 <div class="container">
-    <h2>Daftar Produk</h2>    
+    <h2>Daftar Produk</h2>
     <a href="create" class="btn btn-success mb-3">Tambah Produk Baru</a>
 
     <table class="table table-bordered">
@@ -32,10 +32,10 @@
                 <td>
                     <form action="destroy/{{$p->id}}" method="POST">
                         <a href="edit/{{$p->id}}" class="btn btn-primary btn-sm">Edit</a>
-                        
+
                         @csrf
                         @method('DELETE')
-                        
+
                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus produk ini?')">Hapus</button>
                     </form>
                 </td>
@@ -43,7 +43,7 @@
             @endforeach
         </tbody>
     </table>
-    
+
 </div>
 </body>
 </html>

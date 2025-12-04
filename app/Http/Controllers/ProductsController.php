@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\products;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -12,7 +12,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Products::get();
+        $products = Product::all();
         return view('products.index', ['products' => $products]);
     }
 
@@ -29,50 +29,41 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'nullable|numeric',
-            'description' => 'nullable|string',
-        ]);
-
-        $product = new products();
-        $product->name = $validated['name'];
-        $product->price = $validated['price'] ?? null;
-        $product->description = $validated['description'] ?? null;
-        $product->save();
-
-        return redirect()->route('products.index')->with('success', 'Product created successfully.');
+        Product::create($request->all());
+        return redirect()->route('products.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(products $products)
+    public function show(Product $product)
     {
-        //
+        return view('products.show', ['product' => $product]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(products $products)
+    public function edit(Product $product)
     {
-        //
+        return view('products.edit', ['product' => $product]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, products $products)
+    public function update(Request $request, Product $product)
     {
-        //
+        $product->update($request->all());
+        return redirect()->route('products.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(products $products)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('products.index');
     }
 }
