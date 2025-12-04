@@ -3,7 +3,7 @@
 <body>
     <div class="container">
         <h2>Edit Produk</h2>
-        <form action="{{ route('products.update', $product->id) }}" method="POST">
+        <form action="/advweb-w11/update/{{ $product->id }}" method="POST">
             @csrf
             @method('PUT')
             <div class="form-group">
@@ -22,7 +22,7 @@
             </div>
 
             <button type="submit" class="btn btn-success mt-3">Simpan Perubahan</button>
-            <a href="{{ route('products.index') }}" class="btn btn-secondary mt-3">Batal</a>
+            <a href="/index" class="btn btn-secondary mt-3">Batal</a>
         </form>
     </div>
 </body>

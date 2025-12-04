@@ -30,7 +30,7 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         Product::create($request->all());
-        return redirect()->route('products.index');
+        return redirect('/index');
     }
 
     /**
@@ -55,7 +55,7 @@ class ProductsController extends Controller
     public function update(Request $request, Product $product)
     {
         $product->update($request->all());
-        return redirect()->route('products.index');
+        return redirect('/index');
     }
 
     /**
@@ -64,6 +64,6 @@ class ProductsController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('products.index');
+        return redirect('/index');
     }
 }
